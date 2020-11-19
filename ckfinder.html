@@ -13,7 +13,16 @@ For licensing, see LICENSE.html or http://cksource.com/ckfinder/license
 
 <script src="ckfinder.js"></script>
 <script>
-	CKFinder.start();
+	function getUrlParams()  {
+      var vars = {};
+      window.location.href.replace( /[?&]+([^=&]+)=([^&]*)/gi, function( match, key, value ) {
+          vars[ key ] = value;
+      } );
+
+      return vars;
+    }
+    var params = getUrlParams();
+    CKFinder.start({ connectorInfo : 'token='+params['token'] });
 </script>
 
 </body>
